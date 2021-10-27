@@ -13,12 +13,12 @@ public class GameView implements IObserver {
     private GameController controller;
     private GameModel model;
     private GraphicsContext gr;
-    private int updateCounter;
+    private boolean modelUpdated;
 
     public GameView(GameModel model) {
         this.model = model;
         this.controller = new GameController(this.model);
-        this.updateCounter = 1;
+        this.modelUpdated = true;
         this.model.registerObserver(this);
     }
 
@@ -31,12 +31,13 @@ public class GameView implements IObserver {
             return;
         }
 
-        if (this.updateCounter > 0) {
+        if (modelUpdated) {
             // Clear the canvas
             this.gr.clearRect(0, 0, MvcGameConfig.MAX_X, MvcGameConfig.MAX_Y);
             this.drawCannon(gr);
+
+            modelUpdated = false;
         }
-        this.updateCounter = 0;
     }
 
     private void drawCannon(GraphicsContext gr) {
@@ -50,6 +51,6 @@ public class GameView implements IObserver {
 
     @Override
     public void update() {
-        updateCounter++;
+        modelUpdated = true;
     }
 }
