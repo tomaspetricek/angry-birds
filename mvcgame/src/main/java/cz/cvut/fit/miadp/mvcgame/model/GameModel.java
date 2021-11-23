@@ -11,6 +11,7 @@ import cz.cvut.fit.miadp.mvcgame.abstractFactory.IGameObjectsFactory;
 import cz.cvut.fit.miadp.mvcgame.command.AbstractGameCommand;
 import cz.cvut.fit.miadp.mvcgame.config.MvcGameConfig;
 import cz.cvut.fit.miadp.mvcgame.model.gameObjects.AbsCannon;
+import cz.cvut.fit.miadp.mvcgame.model.gameObjects.AbsEnemy;
 import cz.cvut.fit.miadp.mvcgame.model.gameObjects.AbsMissile;
 import cz.cvut.fit.miadp.mvcgame.model.gameObjects.GameObject;
 import cz.cvut.fit.miadp.mvcgame.observer.IObserver;
@@ -22,6 +23,7 @@ public class GameModel implements IGameModel {
 
     private AbsCannon cannon;
     private List<AbsMissile> missiles;
+    private List<AbsEnemy> enemies;
     private List<IObserver> observers;
     private IGameObjectsFactory goFact;
     private int score;
@@ -34,6 +36,7 @@ public class GameModel implements IGameModel {
         this.goFact = new GameObjectsFactoryA( this );
         this.cannon = this.goFact.createCannon( );
         this.missiles = new ArrayList<AbsMissile>();
+        enemies = new ArrayList<AbsEnemy>();
         this.observers = new ArrayList<IObserver>();
         this.score = 0;
         this.movingStrategy = new SimpleMovingStrategy( );

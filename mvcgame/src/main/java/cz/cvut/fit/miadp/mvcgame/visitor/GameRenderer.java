@@ -2,6 +2,7 @@ package cz.cvut.fit.miadp.mvcgame.visitor;
 
 import cz.cvut.fit.miadp.mvcgame.bridge.IGameGraphics;
 import cz.cvut.fit.miadp.mvcgame.model.gameObjects.AbsCannon;
+import cz.cvut.fit.miadp.mvcgame.model.gameObjects.AbsEnemy;
 import cz.cvut.fit.miadp.mvcgame.model.gameObjects.AbsMissile;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
@@ -26,5 +27,9 @@ public class GameRenderer implements IVisitor {
         this.gr.drawImage( "images/missile.png", missile.getPosition( ) );
         
     }
-    
+
+    @Override
+    public void visitEnemy(AbsEnemy enemy) {
+        this.gr.drawImage("images/enemy1.png", enemy.getPosition());
+    }
 }

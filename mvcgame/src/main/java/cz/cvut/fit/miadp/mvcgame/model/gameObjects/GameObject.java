@@ -15,5 +15,4 @@ public abstract class GameObject implements IVisitable {
     public Position getPosition( ){
         return this.position;
     }
-    
 }
