@@ -4,10 +4,10 @@ import cz.cvut.fit.miadp.mvcgame.model.Position;
 import cz.cvut.fit.miadp.mvcgame.model.Vector;
 import cz.cvut.fit.miadp.mvcgame.visitor.IVisitor;
 
-public class AbsEnemy extends LifetimeLimitedGameObject {
-    
-    protected AbsEnemy(Position initPos) {
-        super(initPos);
+public abstract class AbsEnemy extends GameObject {
+
+    protected AbsEnemy(Position pos) {
+        position = pos;
     }
 
     // wasHit (Line line)

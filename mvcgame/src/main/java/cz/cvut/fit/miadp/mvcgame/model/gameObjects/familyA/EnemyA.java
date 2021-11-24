@@ -5,9 +5,7 @@ import cz.cvut.fit.miadp.mvcgame.model.gameObjects.AbsEnemy;
 
 public class EnemyA extends AbsEnemy {
 
-    protected EnemyA(Position initPos) {
-        super(initPos);
+    public EnemyA(Position pos) {
+        super(pos);
     }
-
-
 }

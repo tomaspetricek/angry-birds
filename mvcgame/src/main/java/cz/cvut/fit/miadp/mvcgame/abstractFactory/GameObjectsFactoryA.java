@@ -3,7 +3,11 @@ package cz.cvut.fit.miadp.mvcgame.abstractFactory;
 import cz.cvut.fit.miadp.mvcgame.config.MvcGameConfig;
 import cz.cvut.fit.miadp.mvcgame.model.IGameModel;
 import cz.cvut.fit.miadp.mvcgame.model.Position;
+import cz.cvut.fit.miadp.mvcgame.model.gameObjects.AbsCollision;
+import cz.cvut.fit.miadp.mvcgame.model.gameObjects.AbsEnemy;
+import cz.cvut.fit.miadp.mvcgame.model.gameObjects.AbsGameInfo;
 import cz.cvut.fit.miadp.mvcgame.model.gameObjects.familyA.CannonA;
+import cz.cvut.fit.miadp.mvcgame.model.gameObjects.familyA.GameInfoA;
 import cz.cvut.fit.miadp.mvcgame.model.gameObjects.familyA.MissileA;
 
 public class GameObjectsFactoryA implements IGameObjectsFactory {
@@ -18,7 +22,6 @@ public class GameObjectsFactoryA implements IGameObjectsFactory {
     @Override
     public CannonA createCannon( ) {
         return new CannonA( new Position( MvcGameConfig.CANNON_POS_X, MvcGameConfig.CANNON_POS_Y ), this );
-
     }
 
     @Override
@@ -32,7 +35,26 @@ public class GameObjectsFactoryA implements IGameObjectsFactory {
             initVelocity, 
             this.model.getMovingStrategy( )
         );
-
     }
-    
+
+    @Override
+    public AbsEnemy createEnemy(Position pos) {
+        return null;
+    }
+
+    @Override
+    public AbsCollision createCollision(Position pos) {
+        return null;
+    }
+
+    @Override
+    public AbsGameInfo createGameInfo() {
+        return new GameInfoA(
+                new Position(
+                    MvcGameConfig.INFO_POS_X,
+                    MvcGameConfig.INFO_POS_Y
+                ),
+                model
+        );
+    }
 }

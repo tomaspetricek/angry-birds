@@ -35,7 +35,6 @@ public class CannonA extends AbsCannon {
 
     public void moveDown( ){
         this.move( new Vector(0, MvcGameConfig.MOVE_STEP ) );
-
     }
 
     @Override

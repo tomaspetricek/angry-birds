@@ -1,19 +1,13 @@
 package cz.cvut.fit.miadp.mvcgame.model;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Queue;
-import java.util.Stack;
+import java.util.*;
 import java.util.concurrent.LinkedBlockingQueue;
 
 import cz.cvut.fit.miadp.mvcgame.abstractFactory.GameObjectsFactoryA;
 import cz.cvut.fit.miadp.mvcgame.abstractFactory.IGameObjectsFactory;
 import cz.cvut.fit.miadp.mvcgame.command.AbstractGameCommand;
 import cz.cvut.fit.miadp.mvcgame.config.MvcGameConfig;
-import cz.cvut.fit.miadp.mvcgame.model.gameObjects.AbsCannon;
-import cz.cvut.fit.miadp.mvcgame.model.gameObjects.AbsEnemy;
-import cz.cvut.fit.miadp.mvcgame.model.gameObjects.AbsMissile;
-import cz.cvut.fit.miadp.mvcgame.model.gameObjects.GameObject;
+import cz.cvut.fit.miadp.mvcgame.model.gameObjects.*;
 import cz.cvut.fit.miadp.mvcgame.observer.IObserver;
 import cz.cvut.fit.miadp.mvcgame.strategy.IMovingStrategy;
 import cz.cvut.fit.miadp.mvcgame.strategy.RealisticMovingStrategy;
@@ -21,12 +15,15 @@ import cz.cvut.fit.miadp.mvcgame.strategy.SimpleMovingStrategy;
 
 public class GameModel implements IGameModel {
 
+    private int score;
     private AbsCannon cannon;
-    private List<AbsMissile> missiles;
+    private AbsGameInfo info;
     private List<AbsEnemy> enemies;
+    private List<AbsMissile> missiles;
+    private List<AbsCollision> collisions;
     private List<IObserver> observers;
     private IGameObjectsFactory goFact;
-    private int score;
+    private Timer timer;
     private IMovingStrategy movingStrategy;
 
     private Queue<AbstractGameCommand> unexecuteCmds = new LinkedBlockingQueue<AbstractGameCommand>( );
@@ -35,11 +32,29 @@ public class GameModel implements IGameModel {
     public GameModel( ){
         this.goFact = new GameObjectsFactoryA( this );
         this.cannon = this.goFact.createCannon( );
+        this.enemies = new ArrayList<AbsEnemy>();
         this.missiles = new ArrayList<AbsMissile>();
-        enemies = new ArrayList<AbsEnemy>();
+        this.collisions = new ArrayList<AbsCollision>();
+        this.info = goFact.createGameInfo();
         this.observers = new ArrayList<IObserver>();
         this.score = 0;
         this.movingStrategy = new SimpleMovingStrategy( );
+    }
+
+    private void initTimer() {
+        timer = new Timer();
+        timer.schedule(
+                new TimerTask() {
+                    @Override
+                    public void run() {
+                        timeTick();
+                    }
+                }, 0, MvcGameConfig.TIME_TICK_PERIOD
+        );
+    }
+
+    public void timeTick() {
+        // TODO implement
     }
 
     public Position getCannonPosition( ){
@@ -105,6 +120,10 @@ public class GameModel implements IGameModel {
             }
         }
         this.missiles.removeAll( toRemove );
+    }
+
+    private void moveEnemies() {
+        // TODO implement
     }
 
     @Override
