@@ -39,4 +39,8 @@ public abstract class AbsCannon extends GameObject {
             //Another state
         }
     }
+
+    public abstract int getPower();
+
+    public abstract double getAngle();
 }

@@ -15,12 +15,12 @@ public class GameRenderer implements IVisitor {
 
     @Override
     public void visitCannon(AbsCannon cannon) {
-        this.gr.drawImage( "images/cannon.png", cannon.getPosition( ) );
+        //this.gr.drawImage( "images/cannon.png", cannon.getPosition( ) );
     }
 
     @Override
     public void visitMissile(AbsMissile missile) {
-        this.gr.drawImage( "images/missile.png", missile.getPosition( ) );
+        // this.gr.drawImage( "images/missile.png", missile.getPosition( ) );
     }
 
     @Override
@@ -30,7 +30,7 @@ public class GameRenderer implements IVisitor {
 
     @Override
     public void visitGameInfo(AbsGameInfo info) {
-        // TODO implement
+        gr.drawText(info.getText(), info.getPosition());
     }
 
     @Override

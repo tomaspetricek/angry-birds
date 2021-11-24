@@ -5,7 +5,7 @@ import cz.cvut.fit.miadp.mvcgame.visitor.IVisitor;
 
 
 public abstract class AbsGameInfo extends GameObject {
-    private IGameModel model;
+    protected IGameModel model;
 
     protected AbsGameInfo(Position pos, IGameModel model){
         this.position = pos;

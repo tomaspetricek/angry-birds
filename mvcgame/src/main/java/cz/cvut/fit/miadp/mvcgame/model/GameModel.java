@@ -138,7 +138,6 @@ public class GameModel implements IGameModel {
         if( this.observers.contains( obs ) ){
             this.observers.remove( obs );
         }
-        
     }
 
     @Override
@@ -162,6 +161,7 @@ public class GameModel implements IGameModel {
         List<GameObject> go = new ArrayList<GameObject>();
         go.addAll( this.missiles );
         go.add( this.cannon );
+        go.add(info);
         return go;
     }
 
@@ -221,4 +221,18 @@ public class GameModel implements IGameModel {
         }
     }
 
+    @Override
+    public int getCannonPower() {
+        return cannon.getPower();
+    }
+
+    @Override
+    public double getCannonAngle() {
+        return cannon.getAngle();
+    }
+
+    @Override
+    public int getScore() {
+        return score;
+    }
 }

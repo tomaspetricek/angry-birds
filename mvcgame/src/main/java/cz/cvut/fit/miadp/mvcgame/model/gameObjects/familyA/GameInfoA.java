@@ -12,6 +12,9 @@ public class GameInfoA extends AbsGameInfo {
 
     @Override
     public String getText() {
-        return null;
+        int power = model.getCannonPower();
+        double angle = model.getCannonAngle();
+        int score = model.getScore();
+        return String.format("Power: %d, Angle: %f, Score %d", power, angle, score);
     }
 }

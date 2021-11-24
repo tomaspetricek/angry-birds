@@ -70,5 +70,14 @@ public class CannonA extends AbsCannon {
             this.power -= MvcGameConfig.POWER_STEP;
         }  
     }
-    
+
+    @Override
+    public int getPower() {
+        return power;
+    }
+
+    @Override
+    public double getAngle() {
+        return angle;
+    }
 }

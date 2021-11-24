@@ -6,9 +6,7 @@ import cz.cvut.fit.miadp.mvcgame.model.Position;
 import cz.cvut.fit.miadp.mvcgame.model.gameObjects.AbsCollision;
 import cz.cvut.fit.miadp.mvcgame.model.gameObjects.AbsEnemy;
 import cz.cvut.fit.miadp.mvcgame.model.gameObjects.AbsGameInfo;
-import cz.cvut.fit.miadp.mvcgame.model.gameObjects.familyA.CannonA;
-import cz.cvut.fit.miadp.mvcgame.model.gameObjects.familyA.GameInfoA;
-import cz.cvut.fit.miadp.mvcgame.model.gameObjects.familyA.MissileA;
+import cz.cvut.fit.miadp.mvcgame.model.gameObjects.familyA.*;
 
 public class GameObjectsFactoryA implements IGameObjectsFactory {
 
@@ -39,12 +37,12 @@ public class GameObjectsFactoryA implements IGameObjectsFactory {
 
     @Override
     public AbsEnemy createEnemy(Position pos) {
-        return null;
+        return new EnemyA(pos);
     }
 
     @Override
     public AbsCollision createCollision(Position pos) {
-        return null;
+        return new CollisionA(pos);
     }
 
     @Override

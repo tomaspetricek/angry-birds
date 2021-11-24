@@ -18,7 +18,6 @@ public class GameGraphics implements IGameGraphics {
     @Override
     public void drawText(String text, Position pos) {
         this.implementor.drawText( text, pos );
-        
     }
 
     @Override

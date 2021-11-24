@@ -27,4 +27,8 @@ public interface IGameModel extends IObservable {
 
     public void registerCommand( AbstractGameCommand cmd );
     public void undoLastCommand( );
+
+    int getCannonPower();
+    double getCannonAngle();
+    int getScore();
 }

@@ -4,7 +4,7 @@ import cz.cvut.fit.miadp.mvcgame.model.Position;
 import cz.cvut.fit.miadp.mvcgame.model.gameObjects.AbsCollision;
 
 public class CollisionA extends AbsCollision {
-    protected CollisionA(Position pos) {
+    public CollisionA(Position pos) {
         super(pos);
     }
 }
