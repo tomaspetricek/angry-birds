@@ -8,15 +8,15 @@ public class MissileA extends AbsMissile {
 
     private IMovingStrategy movingStrategy;
 
-    public MissileA( Position initialPosition, double initAngle, int initVelocity, IMovingStrategy movingStrategy ){
-        super( initialPosition, initAngle, initVelocity );
+    public MissileA(Position initialPosition, double initAngle, int initVelocity, IMovingStrategy movingStrategy, int hitRadius) {
+        super(initialPosition, initAngle, initVelocity, hitRadius);
         this.position = initialPosition;
         this.movingStrategy = movingStrategy;
     }
 
     @Override
-    public void move( ) {
-        this.movingStrategy.updatePosition( this );
+    public void move() {
+        this.movingStrategy.updatePosition(this);
     }
-    
+
 }

@@ -31,7 +31,8 @@ public class GameObjectsFactoryA implements IGameObjectsFactory {
             ), 
             initAngle,
             initVelocity, 
-            this.model.getMovingStrategy( )
+            this.model.getMovingStrategy( ),
+            MvcGameConfig.MISSILE_HIT_RADIUS
         );
     }
 
