@@ -139,6 +139,7 @@ public class GameModel implements IGameModel {
     private void resolveCollisions() {
         List<AbsMissile> missilesToRemove = new ArrayList<AbsMissile>();
         List<AbsEnemy> enemiesToRemove = new ArrayList<AbsEnemy>();
+        boolean notify = false;
 
         for (AbsMissile missile : missiles) {
             for (AbsEnemy enemy : enemies) {
@@ -154,12 +155,17 @@ public class GameModel implements IGameModel {
                                     enemyPos.getY()
                             )
                     ));
+                    notify = true;
                 }
             }
         }
 
         missiles.removeAll(missilesToRemove);
         enemies.removeAll(enemiesToRemove);
+
+        if (notify) {
+            notifyObservers();
+        }
     }
 
     private void executeCmds() {

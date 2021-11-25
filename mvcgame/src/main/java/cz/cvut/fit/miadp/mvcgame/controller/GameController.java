@@ -2,8 +2,7 @@ package cz.cvut.fit.miadp.mvcgame.controller;
 
 import java.util.List;
 
-import cz.cvut.fit.miadp.mvcgame.command.MoveCannonDownCmd;
-import cz.cvut.fit.miadp.mvcgame.command.MoveCannonUpCmd;
+import cz.cvut.fit.miadp.mvcgame.command.*;
 import cz.cvut.fit.miadp.mvcgame.memento.Caretaker;
 import cz.cvut.fit.miadp.mvcgame.model.IGameModel;
 
@@ -11,46 +10,44 @@ public class GameController {
 
     public IGameModel model;
 
-    public GameController( IGameModel model ){
+    public GameController(IGameModel model) {
         this.model = model;
     }
 
-    public void processPressedKeys(List<String> pressedKeysCodes)
-    {
-        for(String code : pressedKeysCodes)
-        {
-            switch(code){
+    public void processPressedKeys(List<String> pressedKeysCodes) {
+        for (String code : pressedKeysCodes) {
+            switch (code) {
                 case "UP":
-                    this.model.registerCommand( new MoveCannonUpCmd( this.model ) );
+                    this.model.registerCommand(new MoveCannonUpCmd(this.model));
                     break;
-                case "DOWN": 
-                    this.model.registerCommand( new MoveCannonDownCmd( this.model ) );
+                case "DOWN":
+                    this.model.registerCommand(new MoveCannonDownCmd(this.model));
                     break;
                 case "SPACE":
-                    this.model.cannonShoot( );
+                    model.registerCommand(new CannonShootCmd(model));
                     break;
                 case "A":
-                    this.model.aimCannonUp();
+                    model.registerCommand(new AimCannonUpCmd(model));
                     break;
                 case "Y":
-                    this.model.aimCannonDown();
+                    model.registerCommand(new AimCannonDownCmd(model));
                     break;
                 case "F":
-                    this.model.cannonPowerUp();
+                    model.registerCommand(new CannonPowerUpCmd(model));
                     break;
                 case "D":
-                    this.model.cannonPowerDown();
+                    model.registerCommand(new CannonPowerDownCmd(model));
                     break;
                 case "M":
-                    this.model.toggleMovingStrategy( );
+                    model.registerCommand(new ToggleMovingStrategyCmd(model));
                     break;
                 case "N":
-                    this.model.toggleShootingMode( );
+                    model.registerCommand(new ToggleShootingModeCmd(model));
                     break;
                 case "Z":
-                    this.model.undoLastCommand( );
-                    
-                default: 
+                    model.registerCommand(new UndoLastCmd(model));
+
+                default:
                     //nothing
             }
         }

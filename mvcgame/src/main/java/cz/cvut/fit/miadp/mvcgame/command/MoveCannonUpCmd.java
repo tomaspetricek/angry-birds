@@ -12,5 +12,4 @@ public class MoveCannonUpCmd extends AbstractGameCommand{
     protected void execute( ) {
         this.subject.moveCannonUp( );
     }
-    
 }
