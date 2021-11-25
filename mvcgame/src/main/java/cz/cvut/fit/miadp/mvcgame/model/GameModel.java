@@ -39,7 +39,8 @@ public class GameModel implements IGameModel {
         this.observers = new ArrayList<IObserver>();
         this.score = 0;
         this.movingStrategy = new SimpleMovingStrategy();
-        spawnEnemies();
+        spawnEnemies(MvcGameConfig.ENEMIES_CNT);
+        initTimer();
     }
 
     private int getRandomNumber(int min, int max) {
@@ -52,10 +53,10 @@ public class GameModel implements IGameModel {
         return new Position(x, y);
     }
 
-    private void spawnEnemies() {
+    private void spawnEnemies(int nEnemies) {
         AbsEnemy enemy;
 
-        for (int i = 0; i < MvcGameConfig.ENEMIES_CNT; i++) {
+        for (int i = 0; i < nEnemies; i++) {
             enemy = goFact.createEnemy(getRandomEnemyPosition());
             enemies.add(enemy);
         }
@@ -74,7 +75,25 @@ public class GameModel implements IGameModel {
     }
 
     public void timeTick() {
-        // TODO implement
+        removeCollisions();
+    }
+
+    private void removeCollisions() {
+        List<AbsCollision> toRemove = new ArrayList<>();
+
+        for (AbsCollision collision : collisions) {
+            if (collision.getAge() > MvcGameConfig.ENEMY_MAX_AGE) {
+                toRemove.add(collision);
+            }
+        }
+
+        int nEnemies = toRemove.size();
+
+        if (nEnemies > 0) {
+            collisions.removeAll(toRemove);
+            spawnEnemies(nEnemies);
+            notifyObservers();
+        }
     }
 
     public Position getCannonPosition() {
@@ -126,8 +145,9 @@ public class GameModel implements IGameModel {
                 if (missile.insideHitRadius(enemy.getPosition())) {
                     missilesToRemove.add(missile);
                     enemiesToRemove.add(enemy);
-                    Position enemyPos = enemy.getPosition();
+                    score++;
 
+                    Position enemyPos = enemy.getPosition();
                     collisions.add(goFact.createCollision(
                             new Position(
                                     enemyPos.getX(),
