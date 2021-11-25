@@ -15,6 +15,6 @@ public class GameInfoA extends AbsGameInfo {
         int power = model.getCannonPower();
         double angle = model.getCannonAngle();
         int score = model.getScore();
-        return String.format("Power: %d, Angle: %f, Score %d", power, angle, score);
+        return String.format("Power: %d, Angle: %.1f, Score: %d", power, angle, score);
     }
 }
