@@ -12,6 +12,7 @@ import cz.cvut.fit.miadp.mvcgame.model.gameObjects.*;
 import cz.cvut.fit.miadp.mvcgame.observer.IObserver;
 import cz.cvut.fit.miadp.mvcgame.strategy.IMovingStrategy;
 import cz.cvut.fit.miadp.mvcgame.strategy.RealisticMovingStrategy;
+import cz.cvut.fit.miadp.mvcgame.strategy.RealisticSineMovingStrategy;
 import cz.cvut.fit.miadp.mvcgame.strategy.SimpleMovingStrategy;
 
 public class GameModel implements IGameModel {
@@ -74,7 +75,7 @@ public class GameModel implements IGameModel {
                 }, 0, MvcGameConfig.TIME_TICK_PERIOD
         );
     }
-    
+
     public void stopTimer() {
         timer.cancel();
         timer.purge();
@@ -203,10 +204,6 @@ public class GameModel implements IGameModel {
         this.missiles.removeAll(toRemove);
     }
 
-    private void moveEnemies() {
-        // TODO implement
-    }
-
     @Override
     public void registerObserver(IObserver obs) {
         if (!this.observers.contains(obs)) {
@@ -256,9 +253,9 @@ public class GameModel implements IGameModel {
         if (this.movingStrategy instanceof SimpleMovingStrategy) {
             this.movingStrategy = new RealisticMovingStrategy();
         } else if (this.movingStrategy instanceof RealisticMovingStrategy) {
+            this.movingStrategy = new RealisticSineMovingStrategy();
+        } else if (this.movingStrategy instanceof RealisticSineMovingStrategy){
             this.movingStrategy = new SimpleMovingStrategy();
-        } else {
-            //Another strategy
         }
     }
 

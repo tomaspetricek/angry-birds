@@ -117,6 +117,7 @@ public class GameModelProxy implements IGameModel {
         this.subject.undoLastCommand( );  
     }
 
+    // NEWLY ADDED METHODS
     @Override
     public int getCannonPower() {
         return subject.getCannonPower();
