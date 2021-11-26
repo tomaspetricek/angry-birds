@@ -6,6 +6,7 @@ import java.util.concurrent.LinkedBlockingQueue;
 import cz.cvut.fit.miadp.mvcgame.abstractFactory.GameObjectsFactoryA;
 import cz.cvut.fit.miadp.mvcgame.abstractFactory.IGameObjectsFactory;
 import cz.cvut.fit.miadp.mvcgame.command.AbstractGameCommand;
+import cz.cvut.fit.miadp.mvcgame.command.UndoLastCmd;
 import cz.cvut.fit.miadp.mvcgame.config.MvcGameConfig;
 import cz.cvut.fit.miadp.mvcgame.model.gameObjects.*;
 import cz.cvut.fit.miadp.mvcgame.observer.IObserver;
@@ -172,7 +173,10 @@ public class GameModel implements IGameModel {
         while (!this.unexecuteCmds.isEmpty()) {
             AbstractGameCommand cmd = this.unexecuteCmds.poll();
             cmd.doExecute();
-            this.executedCmds.push(cmd);
+
+            if (!(cmd instanceof UndoLastCmd)) {
+                this.executedCmds.push(cmd);
+            }
         }
     }
 
@@ -261,7 +265,7 @@ public class GameModel implements IGameModel {
         private int score;
         private int cannonX;
         private int cannonY;
-        //TODO GameModel state snapshot
+        private List<AbsEnemy> enemies;
     }
 
     public Object createMemento() {
@@ -269,6 +273,8 @@ public class GameModel implements IGameModel {
         m.score = this.score;
         m.cannonX = this.getCannonPosition().getX();
         m.cannonY = this.getCannonPosition().getY();
+        m.enemies = new ArrayList<AbsEnemy>();
+        m.enemies.addAll(this.enemies);
         return m;
     }
 
@@ -277,6 +283,10 @@ public class GameModel implements IGameModel {
         this.score = m.score;
         this.cannon.getPosition().setX(m.cannonX);
         this.cannon.getPosition().setY(m.cannonY);
+        this.missiles.clear();
+        this.collisions.clear();
+        this.enemies.clear();
+        this.enemies.addAll(m.enemies);
     }
 
     @Override

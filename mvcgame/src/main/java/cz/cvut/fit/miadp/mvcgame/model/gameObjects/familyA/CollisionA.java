@@ -7,4 +7,9 @@ public class CollisionA extends AbsCollision {
     public CollisionA(Position pos) {
         super(pos);
     }
+
+    @Override
+    public Object clone() throws CloneNotSupportedException {
+        return (CollisionA) super.clone();
+    }
 }

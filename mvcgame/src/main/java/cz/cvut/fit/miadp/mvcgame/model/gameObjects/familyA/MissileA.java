@@ -10,7 +10,6 @@ public class MissileA extends AbsMissile {
 
     public MissileA(Position initialPosition, double initAngle, int initVelocity, IMovingStrategy movingStrategy, int hitRadius) {
         super(initialPosition, initAngle, initVelocity, hitRadius);
-        this.position = initialPosition;
         this.movingStrategy = movingStrategy;
     }
 
@@ -19,4 +18,8 @@ public class MissileA extends AbsMissile {
         this.movingStrategy.updatePosition(this);
     }
 
+    @Override
+    public Object clone() throws CloneNotSupportedException {
+        return (MissileA) super.clone();
+    }
 }

@@ -1,10 +1,9 @@
 package cz.cvut.fit.miadp.mvcgame.model.gameObjects;
 
 import cz.cvut.fit.miadp.mvcgame.model.Position;
-import cz.cvut.fit.miadp.mvcgame.model.Vector;
 import cz.cvut.fit.miadp.mvcgame.visitor.IVisitor;
 
-public abstract class AbsEnemy extends GameObject {
+public abstract class AbsEnemy extends GameObject implements Cloneable {
 
     protected AbsEnemy(Position pos) {
         position = pos;
@@ -17,5 +16,10 @@ public abstract class AbsEnemy extends GameObject {
     @Override
     public void acceptVisitor(IVisitor visitor) {
         visitor.visitEnemy(this);
+    }
+
+    @Override
+    public Object clone() throws CloneNotSupportedException {
+        return (AbsEnemy) super.clone();
     }
 }
