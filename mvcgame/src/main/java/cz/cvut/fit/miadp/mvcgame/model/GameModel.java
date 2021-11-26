@@ -266,6 +266,7 @@ public class GameModel implements IGameModel {
         private int cannonX;
         private int cannonY;
         private List<AbsEnemy> enemies;
+        private IMovingStrategy movingStrategy;
     }
 
     public Object createMemento() {
@@ -275,6 +276,7 @@ public class GameModel implements IGameModel {
         m.cannonY = this.getCannonPosition().getY();
         m.enemies = new ArrayList<AbsEnemy>();
         m.enemies.addAll(this.enemies);
+        m.movingStrategy = this.movingStrategy;
         return m;
     }
 
@@ -287,6 +289,7 @@ public class GameModel implements IGameModel {
         this.collisions.clear();
         this.enemies.clear();
         this.enemies.addAll(m.enemies);
+        this.movingStrategy = m.movingStrategy;
     }
 
     @Override
