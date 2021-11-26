@@ -131,4 +131,9 @@ public class GameModelProxy implements IGameModel {
     public int getScore() {
         return subject.getScore();
     }
+
+    @Override
+    public void stopTimer() {
+        subject.stopTimer();
+    }
 }

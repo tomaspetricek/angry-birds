@@ -86,6 +86,11 @@ public class MvcGameJavaFxLauncher extends Application {
         stage.show();
     }
 
+    @Override
+    public void stop(){
+        theMvcGame.stop();
+    }
+
     public static void main(String[] args) {
         launch();
     }

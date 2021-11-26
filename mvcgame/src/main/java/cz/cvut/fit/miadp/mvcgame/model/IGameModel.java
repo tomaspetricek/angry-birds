@@ -9,26 +9,44 @@ import cz.cvut.fit.miadp.mvcgame.strategy.IMovingStrategy;
 
 public interface IGameModel extends IObservable {
     public void moveCannonUp();
+
     public void moveCannonDown();
+
     public void cannonShoot();
+
     public void aimCannonUp();
+
     public void aimCannonDown();
+
     public void cannonPowerUp();
+
     public void cannonPowerDown();
+
     public void toggleMovingStrategy();
-    public void toggleShootingMode( );
+
+    public void toggleShootingMode();
 
     public void update();
-    public List<GameObject> getGameObjects();
-    public IMovingStrategy getMovingStrategy();
-    public Object createMemento();
-    public void setMemento(Object memento);
-	public Position getCannonPosition();
 
-    public void registerCommand( AbstractGameCommand cmd );
-    public void undoLastCommand( );
+    public List<GameObject> getGameObjects();
+
+    public IMovingStrategy getMovingStrategy();
+
+    public Object createMemento();
+
+    public void setMemento(Object memento);
+
+    public Position getCannonPosition();
+
+    public void registerCommand(AbstractGameCommand cmd);
+
+    public void undoLastCommand();
 
     int getCannonPower();
+
     double getCannonAngle();
+
     int getScore();
+
+    void stopTimer();
 }

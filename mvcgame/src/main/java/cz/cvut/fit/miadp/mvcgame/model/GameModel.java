@@ -74,6 +74,11 @@ public class GameModel implements IGameModel {
                 }, 0, MvcGameConfig.TIME_TICK_PERIOD
         );
     }
+    
+    public void stopTimer() {
+        timer.cancel();
+        timer.purge();
+    }
 
     public void timeTick() {
         removeCollisions();

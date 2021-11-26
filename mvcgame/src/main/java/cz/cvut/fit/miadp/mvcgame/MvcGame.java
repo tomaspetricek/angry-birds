@@ -37,6 +37,10 @@ public class MvcGame
         this.model.update( );
     }
 
+    public void stop() {
+        model.stopTimer();
+    }
+
     public void render(IGameGraphics gr)
     {
         this.view.setGraphicContext( gr );
