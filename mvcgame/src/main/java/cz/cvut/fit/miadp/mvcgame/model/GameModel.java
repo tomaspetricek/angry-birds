@@ -59,7 +59,7 @@ public class GameModel implements IGameModel {
         AbsEnemy enemy;
 
         for (int i = 0; i < nEnemies; i++) {
-            enemy = goFact.createEnemy(getRandomEnemyPosition());
+            enemy = goFact.createMinionEnemy(getRandomEnemyPosition());
             enemies.add(enemy);
         }
     }
@@ -156,13 +156,7 @@ public class GameModel implements IGameModel {
                     missilesToRemove.add(missile);
                     enemiesToRemove.add(enemy);
                     score++;
-
-                    Position enemyPos = enemy.getPosition();
-                    try {
-                        collisions.add(goFact.createCollision((Position) enemyPos.clone()));
-                    } catch (CloneNotSupportedException e) {
-                        e.printStackTrace();
-                    }
+                    collisions.add(enemy.createCollision());
                     notify = true;
                 }
             }

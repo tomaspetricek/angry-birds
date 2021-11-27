@@ -37,13 +37,13 @@ public class GameObjectsFactoryA implements IGameObjectsFactory {
     }
 
     @Override
-    public AbsEnemy createEnemy(Position pos) {
-        return new EnemyA(pos);
+    public AbsEnemy createMinionEnemy(Position pos) {
+        return new MinionEnemyA(pos);
     }
 
     @Override
-    public AbsCollision createCollision(Position pos) {
-        return new CollisionA(pos);
+    public AbsEnemy createForemanEnemy(Position pos) {
+        return new ForemanEnemyA(pos);
     }
 
     @Override

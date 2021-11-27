@@ -13,4 +13,6 @@ public abstract class AbsEnemy extends GameObject {
     public void acceptVisitor(IVisitor visitor) {
         visitor.visitEnemy(this);
     }
+
+    public abstract AbsCollision createCollision();
 }
