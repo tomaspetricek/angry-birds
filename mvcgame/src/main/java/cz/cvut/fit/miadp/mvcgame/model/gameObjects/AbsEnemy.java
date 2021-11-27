@@ -9,10 +9,6 @@ public abstract class AbsEnemy extends GameObject {
         position = pos;
     }
 
-    // wasHit (Line line)
-    // timeHit
-    // lifeExpired
-
     @Override
     public void acceptVisitor(IVisitor visitor) {
         visitor.visitEnemy(this);
