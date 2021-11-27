@@ -8,6 +8,7 @@ import cz.cvut.fit.miadp.mvcgame.model.Position;
 import cz.cvut.fit.miadp.mvcgame.model.Vector;
 import cz.cvut.fit.miadp.mvcgame.model.gameObjects.AbsCollision;
 import cz.cvut.fit.miadp.mvcgame.model.gameObjects.AbsEnemy;
+import cz.cvut.fit.miadp.mvcgame.model.gameObjects.AbsGameInfo;
 import cz.cvut.fit.miadp.mvcgame.model.gameObjects.AbsMissile;
 import cz.cvut.fit.miadp.mvcgame.strategy.SimpleMovingStrategy;
 import junit.framework.Assert;
@@ -18,18 +19,25 @@ import java.util.List;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-public class CreateCollisionTestCase {
+public class CreateGameInfoMock {
     @Test
-    public void createCollision() {
-        /*
-        IGameModel model = new GameModel();
-        model.cannonShoot();
+    public void createGameInfo() {
+        IGameModel model = mock(GameModel.class);
+        double angle = 0.5;
+        int power = 10;
+        int score = 100;
+        String expectedText = String.format("Power: %d, Angle: %.1f, Score: %d", power, angle, score);
 
-        missile.move(new Vector(100, 0));
-        AbsEnemy enemy = goFact.createEnemy(new Position(missile.getPosition().getX(), missile.getPosition().getY()));
-        model.update();
-        List<AbsCollision> collisions = model.getCollisions();
-        Assert.assertEquals(model.getCollisions().size(), 1);
-         */
+        // prepare mocking
+        when(model.getCannonAngle()).thenReturn(angle);
+        when(model.getCannonPower()).thenReturn(power);
+        when(model.getScore()).thenReturn(score);
+
+        // create info
+        IGameObjectsFactory goFact = new GameObjectsFactoryA(model);
+        AbsGameInfo info = goFact.createGameInfo();
+
+        // perform assertions
+        Assert.assertEquals(expectedText, info.getText());
     }
 }

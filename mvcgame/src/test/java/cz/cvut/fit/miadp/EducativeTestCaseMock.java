@@ -17,13 +17,13 @@ import junit.framework.Assert;
 public class EducativeTestCaseMock {
 
     @Test
-    public void createMissile( ){
-        IGameModel model = mock( GameModel.class );
-        when( model.getCannonPosition( ) ).thenReturn( new Position( 500, 600 ) );
-        when( model.getMovingStrategy( ) ).thenReturn( new SimpleMovingStrategy( ) );
-        IGameObjectsFactory goFact = new GameObjectsFactoryA( model );
-        AbsMissile missile = goFact.createMissile( 0 , 10000000 );
-        Assert.assertEquals( missile.getPosition( ).getX( ), 500 );
-        Assert.assertEquals( missile.getPosition( ).getY( ), 600 );
+    public void createMissile() {
+        IGameModel model = mock(GameModel.class);
+        when(model.getCannonPosition()).thenReturn(new Position(500, 600));
+        when(model.getMovingStrategy()).thenReturn(new SimpleMovingStrategy());
+        IGameObjectsFactory goFact = new GameObjectsFactoryA(model);
+        AbsMissile missile = goFact.createMissile(0, 10000000);
+        Assert.assertEquals(missile.getPosition().getX(), 500);
+        Assert.assertEquals(missile.getPosition().getY(), 600);
     }
 }

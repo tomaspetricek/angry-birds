@@ -8,17 +8,17 @@ public abstract class GameObject implements IVisitable, Cloneable {
 
     protected Position position;
 
-    public void move( Vector v ) {
-        this.position.add( v );
-    } 
+    public void move(Vector v) {
+        this.position.add(v);
+    }
 
-    public Position getPosition( ){
+    public Position getPosition() {
         return this.position;
     }
 
     @Override
     public Object clone() throws CloneNotSupportedException {
-        GameObject clone =  (GameObject) super.clone();
+        GameObject clone = (GameObject) super.clone();
         clone.position = position.clone();
         return clone;
     }

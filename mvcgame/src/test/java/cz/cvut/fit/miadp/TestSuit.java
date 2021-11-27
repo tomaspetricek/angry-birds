@@ -10,6 +10,7 @@ import org.junit.runners.Suite;
         EducativeTestCaseMock.class,
         ToggleMovingStrategyTestCase.class,
         ChangeCannonPowerTestCase.class,
+        CreateGameInfoMock.class,
 })
 
 public class TestSuit {
