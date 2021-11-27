@@ -158,12 +158,11 @@ public class GameModel implements IGameModel {
                     score++;
 
                     Position enemyPos = enemy.getPosition();
-                    collisions.add(goFact.createCollision(
-                            new Position(
-                                    enemyPos.getX(),
-                                    enemyPos.getY()
-                            )
-                    ));
+                    try {
+                        collisions.add(goFact.createCollision((Position) enemyPos.clone()));
+                    } catch (CloneNotSupportedException e) {
+                        e.printStackTrace();
+                    }
                     notify = true;
                 }
             }
