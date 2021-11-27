@@ -8,9 +8,6 @@ import org.junit.runners.Suite;
 @Suite.SuiteClasses({
         EducativeTestCase.class,
         EducativeTestCaseMock.class,
-        ToggleMovingStrategyTestCase.class,
-        ChangeCannonPowerTestCase.class,
-        CreateGameInfoMock.class,
 })
 
 public class TestSuit {
