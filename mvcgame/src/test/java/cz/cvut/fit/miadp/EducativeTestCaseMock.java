@@ -26,5 +26,4 @@ public class EducativeTestCaseMock {
         Assert.assertEquals( missile.getPosition( ).getX( ), 500 );
         Assert.assertEquals( missile.getPosition( ).getY( ), 600 );
     }
-    
 }
