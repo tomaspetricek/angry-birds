@@ -25,6 +25,7 @@ public class ChangeCannonPowerTestCase {
         model.update();
         int powerAfterDecrease = model.getCannonPower();
 
+        // perform tests
         Assert.assertEquals(initPower + MvcGameConfig.POWER_STEP, powerAfterIncrease);
         Assert.assertEquals(initPower, powerAfterDecrease);
     }
