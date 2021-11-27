@@ -7,4 +7,9 @@ public class MinionCollisionA extends AbsCollision {
     public MinionCollisionA(Position pos) {
         super(pos);
     }
+
+    @Override
+    public String getPath() {
+        return "images/collision.png";
+    }
 }

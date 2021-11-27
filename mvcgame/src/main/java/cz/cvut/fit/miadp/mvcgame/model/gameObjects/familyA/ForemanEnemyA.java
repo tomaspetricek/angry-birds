@@ -14,4 +14,9 @@ public class ForemanEnemyA extends AbsEnemy {
     public AbsCollision createCollision() {
         return new ForemanCollisionA(position);
     }
+
+    @Override
+    public String getPath() {
+        return "images/enemy2.png";
+    }
 }

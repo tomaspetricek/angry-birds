@@ -7,4 +7,9 @@ public class ForemanCollisionA extends AbsCollision {
     public ForemanCollisionA(Position pos) {
         super(pos);
     }
+
+    @Override
+    public String getPath() {
+        return "images/collision2.png";
+    }
 }

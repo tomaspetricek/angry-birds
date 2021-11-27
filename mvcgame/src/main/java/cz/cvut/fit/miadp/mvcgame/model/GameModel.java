@@ -27,6 +27,7 @@ public class GameModel implements IGameModel {
     private IGameObjectsFactory goFact;
     private Timer timer;
     private IMovingStrategy movingStrategy;
+    boolean spawnForeman;
 
     private Queue<AbstractGameCommand> unexecuteCmds = new LinkedBlockingQueue<AbstractGameCommand>();
     private Stack<AbstractGameCommand> executedCmds = new Stack<AbstractGameCommand>();
@@ -41,6 +42,7 @@ public class GameModel implements IGameModel {
         this.observers = new ArrayList<IObserver>();
         this.score = 0;
         this.movingStrategy = new SimpleMovingStrategy();
+        spawnForeman = true;
         spawnEnemies(MvcGameConfig.ENEMIES_CNT);
         initTimer();
     }
@@ -59,8 +61,14 @@ public class GameModel implements IGameModel {
         AbsEnemy enemy;
 
         for (int i = 0; i < nEnemies; i++) {
-            enemy = goFact.createMinionEnemy(getRandomEnemyPosition());
+            if (spawnForeman) {
+                enemy = goFact.createForemanEnemy(getRandomEnemyPosition());
+            } else {
+                enemy = goFact.createMinionEnemy(getRandomEnemyPosition());
+            }
+
             enemies.add(enemy);
+            spawnForeman = !spawnForeman;
         }
     }
 

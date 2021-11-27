@@ -15,4 +15,9 @@ public class MinionEnemyA extends AbsEnemy {
     public AbsCollision createCollision() {
         return new MinionCollisionA(position);
     }
+
+    @Override
+    public String getPath() {
+        return "images/enemy1.png";
+    }
 }

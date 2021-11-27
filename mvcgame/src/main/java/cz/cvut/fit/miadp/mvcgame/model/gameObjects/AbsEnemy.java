@@ -15,4 +15,6 @@ public abstract class AbsEnemy extends GameObject {
     }
 
     public abstract AbsCollision createCollision();
+
+    public abstract String getPath();
 }

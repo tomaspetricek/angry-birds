@@ -13,7 +13,4 @@ public interface IGameObjectsFactory {
     AbsEnemy createForemanEnemy(Position pos);
 
     AbsGameInfo createGameInfo();
-
-    //TODO: enemies, gameInfo, collisions
-
 }

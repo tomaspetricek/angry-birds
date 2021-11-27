@@ -13,4 +13,6 @@ public abstract class AbsCollision extends LifetimeLimitedGameObject {
     public void acceptVisitor(IVisitor visitor) {
         visitor.visitCollision(this);
     }
+
+    public abstract String getPath();
 }
