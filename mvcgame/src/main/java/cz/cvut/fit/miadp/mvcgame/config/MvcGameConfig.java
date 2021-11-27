@@ -15,12 +15,12 @@ public class MvcGameConfig
     public static final int POWER_STEP = 1;
 
     public static final double GRAVITY = 9.8;
-    public static final long TIME_TICK_PERIOD = 1; // TODO change to reasonable
+    public static final long TIME_TICK_PERIOD = 200;    // milliseconds
     public static final int MISSILE_HIT_RADIUS = 20;
     private static final int TOP_BORDER_HEIGHT = 10;
     private static final int INFO_MARGIN = 5;
     public static final int INFO_POS_X = INFO_MARGIN;
     public static final int INFO_POS_Y = TOP_BORDER_HEIGHT + INFO_MARGIN;
     public static final int ENEMIES_CNT = 20;
-    public static final long ENEMY_MAX_AGE = TimeUnit.SECONDS.toMillis(5);
+    public static final long ENEMY_MAX_AGE = TimeUnit.SECONDS.toMillis(1);  // milliseconds
 }

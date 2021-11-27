@@ -86,6 +86,8 @@ public class GameModel implements IGameModel {
     }
 
     private void removeCollisions() {
+        if (collisions.isEmpty()) return;
+
         List<AbsCollision> toRemove = new ArrayList<>();
 
         for (AbsCollision collision : collisions) {
