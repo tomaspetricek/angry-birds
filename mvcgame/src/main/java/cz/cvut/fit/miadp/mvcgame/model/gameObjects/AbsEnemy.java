@@ -17,9 +17,4 @@ public abstract class AbsEnemy extends GameObject {
     public void acceptVisitor(IVisitor visitor) {
         visitor.visitEnemy(this);
     }
-
-    @Override
-    public Object clone() throws CloneNotSupportedException {
-        return super.clone();
-    }
 }

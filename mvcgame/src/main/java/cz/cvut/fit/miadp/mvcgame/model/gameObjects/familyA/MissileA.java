@@ -17,9 +17,4 @@ public class MissileA extends AbsMissile {
     public void move() {
         this.movingStrategy.updatePosition(this);
     }
-
-    @Override
-    public Object clone() throws CloneNotSupportedException {
-        return (MissileA) super.clone();
-    }
 }

@@ -43,9 +43,4 @@ public abstract class AbsCannon extends GameObject {
     public abstract int getPower();
 
     public abstract double getAngle();
-
-    @Override
-    public Object clone() throws CloneNotSupportedException {
-        return super.clone();
-    }
 }

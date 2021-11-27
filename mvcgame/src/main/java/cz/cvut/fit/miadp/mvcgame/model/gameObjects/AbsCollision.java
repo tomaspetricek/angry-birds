@@ -13,9 +13,4 @@ public abstract class AbsCollision extends LifetimeLimitedGameObject {
     public void acceptVisitor(IVisitor visitor) {
         visitor.visitCollision(this);
     }
-
-    @Override
-    public Object clone() throws CloneNotSupportedException {
-        return super.clone();
-    }
 }

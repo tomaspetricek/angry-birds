@@ -8,9 +8,4 @@ public class EnemyA extends AbsEnemy {
     public EnemyA(Position pos) {
         super(pos);
     }
-
-    @Override
-    public Object clone() throws CloneNotSupportedException {
-        return (EnemyA) super.clone();
-    }
 }

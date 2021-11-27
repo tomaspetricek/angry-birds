@@ -9,17 +9,12 @@ public abstract class LifetimeLimitedGameObject extends GameObject {
 
     private LocalDateTime bornAt;
 
-    protected LifetimeLimitedGameObject( Position position ){
+    protected LifetimeLimitedGameObject(Position position) {
         this.position = position;
-        this.bornAt = LocalDateTime.now( );
+        this.bornAt = LocalDateTime.now();
     }
 
-    public long getAge( ){
-        return ChronoUnit.MILLIS.between( this.bornAt, LocalDateTime.now( ) );
-    }
-
-    @Override
-    public Object clone() throws CloneNotSupportedException {
-        return super.clone();
+    public long getAge() {
+        return ChronoUnit.MILLIS.between(this.bornAt, LocalDateTime.now());
     }
 }

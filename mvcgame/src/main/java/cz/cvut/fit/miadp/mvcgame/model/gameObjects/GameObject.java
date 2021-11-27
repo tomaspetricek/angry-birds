@@ -15,11 +15,4 @@ public abstract class GameObject implements IVisitable {
     public Position getPosition() {
         return this.position;
     }
-
-    @Override
-    public Object clone() throws CloneNotSupportedException {
-        GameObject clone = (GameObject) super.clone();
-        clone.position = (Position) position.clone();
-        return clone;
-    }
 }
