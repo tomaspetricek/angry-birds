@@ -3,6 +3,7 @@ package cz.cvut.fit.miadp.mvcgame.model;
 import java.util.List;
 
 import cz.cvut.fit.miadp.mvcgame.command.AbstractGameCommand;
+import cz.cvut.fit.miadp.mvcgame.model.gameObjects.AbsCollision;
 import cz.cvut.fit.miadp.mvcgame.model.gameObjects.GameObject;
 import cz.cvut.fit.miadp.mvcgame.observer.IObservable;
 import cz.cvut.fit.miadp.mvcgame.strategy.IMovingStrategy;
@@ -49,4 +50,6 @@ public interface IGameModel extends IObservable {
     int getScore();
 
     void stopTimer();
+
+    public List<AbsCollision> getCollisions();
 }

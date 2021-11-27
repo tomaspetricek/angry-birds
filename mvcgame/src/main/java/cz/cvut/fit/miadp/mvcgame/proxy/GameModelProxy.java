@@ -5,6 +5,7 @@ import java.util.List;
 import cz.cvut.fit.miadp.mvcgame.command.AbstractGameCommand;
 import cz.cvut.fit.miadp.mvcgame.model.IGameModel;
 import cz.cvut.fit.miadp.mvcgame.model.Position;
+import cz.cvut.fit.miadp.mvcgame.model.gameObjects.AbsCollision;
 import cz.cvut.fit.miadp.mvcgame.model.gameObjects.GameObject;
 import cz.cvut.fit.miadp.mvcgame.observer.IObserver;
 import cz.cvut.fit.miadp.mvcgame.strategy.IMovingStrategy;
@@ -136,5 +137,10 @@ public class GameModelProxy implements IGameModel {
     @Override
     public void stopTimer() {
         subject.stopTimer();
+    }
+
+    @Override
+    public List<AbsCollision> getCollisions() {
+        return subject.getCollisions();
     }
 }

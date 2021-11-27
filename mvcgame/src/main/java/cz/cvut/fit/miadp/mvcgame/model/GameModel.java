@@ -324,4 +324,9 @@ public class GameModel implements IGameModel {
     public int getScore() {
         return score;
     }
+
+    @Override
+    public List<AbsCollision> getCollisions() {
+        return collisions;
+    }
 }

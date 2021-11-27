@@ -27,8 +27,6 @@ public class EducativeTestCase {
         Assert.assertEquals(positionBeforeUndoY, positionAfterExecutionY + MvcGameConfig.MOVE_STEP );
         Assert.assertEquals(positionBeforeUndoX, positionAfterUndoX);
         Assert.assertEquals(positionBeforeUndoY, positionAfterUndoY);
-        
-
     }
     
 }
