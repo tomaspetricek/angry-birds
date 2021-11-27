@@ -1,19 +1,12 @@
 # mvcgame-ni-adp-2021
 
-### .vscode/launch.json ###
+## Additional design patterns
+### Abstract method
+- for collision creation of different enemies
 
-```
-{
-    "configurations": [
-    {
-        "type": "java",
-        "name": "CodeLens (Launch) - MvcGameJavaFxLauncher",
-        "request": "launch",
-        "mainClass": "cz.cvut.fit.miadp.MvcGameJavaFxLauncher",
-        "vmArgs": "--module-path /home/chvostom/javafx-sdk-17.0.0.1/lib --add-modules javafx.controls",
-        "projectName": "mvcgame"
-    }
-    ]
-}
-```
+### Prototype
+- for clone creation of position
+
+### Flyweight
+- only flyweight factory for image creation and reuse
 
