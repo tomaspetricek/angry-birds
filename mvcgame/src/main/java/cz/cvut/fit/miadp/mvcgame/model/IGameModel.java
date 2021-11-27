@@ -50,6 +50,4 @@ public interface IGameModel extends IObservable {
     int getScore();
 
     void stopTimer();
-
-    public List<AbsCollision> getCollisions();
 }

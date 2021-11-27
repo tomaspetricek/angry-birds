@@ -138,9 +138,4 @@ public class GameModelProxy implements IGameModel {
     public void stopTimer() {
         subject.stopTimer();
     }
-
-    @Override
-    public List<AbsCollision> getCollisions() {
-        return subject.getCollisions();
-    }
 }
