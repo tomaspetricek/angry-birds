@@ -4,7 +4,7 @@ import cz.cvut.fit.miadp.mvcgame.model.Position;
 import cz.cvut.fit.miadp.mvcgame.model.Vector;
 import cz.cvut.fit.miadp.mvcgame.visitor.IVisitable;
 
-public abstract class GameObject implements IVisitable, Cloneable {
+public abstract class GameObject implements IVisitable {
 
     protected Position position;
 
@@ -19,7 +19,7 @@ public abstract class GameObject implements IVisitable, Cloneable {
     @Override
     public Object clone() throws CloneNotSupportedException {
         GameObject clone = (GameObject) super.clone();
-        clone.position = position.clone();
+        clone.position = (Position) position.clone();
         return clone;
     }
 }

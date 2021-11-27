@@ -3,7 +3,7 @@ package cz.cvut.fit.miadp.mvcgame.model.gameObjects;
 import cz.cvut.fit.miadp.mvcgame.model.Position;
 import cz.cvut.fit.miadp.mvcgame.visitor.IVisitor;
 
-public abstract class AbsCollision extends LifetimeLimitedGameObject implements Cloneable {
+public abstract class AbsCollision extends LifetimeLimitedGameObject {
 
     protected AbsCollision(Position pos) {
         super(pos);
@@ -16,6 +16,6 @@ public abstract class AbsCollision extends LifetimeLimitedGameObject implements 
 
     @Override
     public Object clone() throws CloneNotSupportedException {
-        return (AbsCollision) super.clone();
+        return super.clone();
     }
 }

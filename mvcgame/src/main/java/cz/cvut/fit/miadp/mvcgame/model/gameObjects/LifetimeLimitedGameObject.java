@@ -5,7 +5,7 @@ import java.time.temporal.ChronoUnit;
 
 import cz.cvut.fit.miadp.mvcgame.model.Position;
 
-public abstract class LifetimeLimitedGameObject extends GameObject implements Cloneable {
+public abstract class LifetimeLimitedGameObject extends GameObject {
 
     private LocalDateTime bornAt;
 
@@ -20,6 +20,6 @@ public abstract class LifetimeLimitedGameObject extends GameObject implements Cl
 
     @Override
     public Object clone() throws CloneNotSupportedException {
-        return (LifetimeLimitedGameObject) super.clone();
+        return super.clone();
     }
 }

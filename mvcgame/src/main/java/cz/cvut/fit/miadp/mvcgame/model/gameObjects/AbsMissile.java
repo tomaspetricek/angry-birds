@@ -3,7 +3,7 @@ package cz.cvut.fit.miadp.mvcgame.model.gameObjects;
 import cz.cvut.fit.miadp.mvcgame.model.Position;
 import cz.cvut.fit.miadp.mvcgame.visitor.IVisitor;
 
-public abstract class AbsMissile extends LifetimeLimitedGameObject implements Cloneable {
+public abstract class AbsMissile extends LifetimeLimitedGameObject {
 
     private double initAngle;
     private int initVelocity;
