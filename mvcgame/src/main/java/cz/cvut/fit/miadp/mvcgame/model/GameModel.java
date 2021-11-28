@@ -155,7 +155,7 @@ public class GameModel implements IGameModel {
         this.moveMissiles();
     }
 
-    private void resolveCollisions() {
+    private synchronized void resolveCollisions() {
         List<AbsMissile> missilesToRemove = new ArrayList<AbsMissile>();
         List<AbsEnemy> enemiesToRemove = new ArrayList<AbsEnemy>();
         boolean notify = false;
