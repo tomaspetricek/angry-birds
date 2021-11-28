@@ -13,3 +13,12 @@
 ### Composite
 - for managing group of missiles that act as a unit
 
+
+## Additional features
+
+### Group shooting mode
+- allows shooting group of missiles
+
+### Different types of enemies spawning
+- two types of enemies are spawning in the game
+

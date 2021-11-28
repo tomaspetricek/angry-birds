@@ -59,4 +59,8 @@ public abstract class AbsCannon extends GameObject {
     public abstract int getPower();
 
     public abstract double getAngle();
+
+    public abstract void setPower(int power);
+
+    public abstract void setAngle(double angle);
 }

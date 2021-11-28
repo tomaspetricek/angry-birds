@@ -3,7 +3,6 @@ package cz.cvut.fit.miadp.mvcgame.model;
 import java.util.*;
 import java.util.concurrent.LinkedBlockingQueue;
 
-import cz.cvut.fit.miadp.MvcGameJavaFxLauncher;
 import cz.cvut.fit.miadp.mvcgame.abstractFactory.GameObjectsFactoryA;
 import cz.cvut.fit.miadp.mvcgame.abstractFactory.IGameObjectsFactory;
 import cz.cvut.fit.miadp.mvcgame.command.AbstractGameCommand;
@@ -272,9 +271,11 @@ public class GameModel implements IGameModel {
         private int score;
         private int cannonX;
         private int cannonY;
+        private double cannonAngle;
+        private int cannonPower;
+        private IShootingMode cannonShootingMode;
         private List<AbsEnemy> enemies;
         private IMovingStrategy movingStrategy;
-        private IShootingMode shootingMode;
     }
 
     public Object createMemento() {
@@ -282,10 +283,12 @@ public class GameModel implements IGameModel {
         m.score = this.score;
         m.cannonX = this.getCannonPosition().getX();
         m.cannonY = this.getCannonPosition().getY();
+        m.cannonAngle = cannon.getAngle();
+        m.cannonPower = cannon.getPower();
+        m.cannonShootingMode = cannon.getShootingMode();
         m.enemies = new ArrayList<AbsEnemy>();
         m.enemies.addAll(this.enemies);
         m.movingStrategy = this.movingStrategy;
-        m.shootingMode = cannon.getShootingMode();
         return m;
     }
 
@@ -294,7 +297,9 @@ public class GameModel implements IGameModel {
         this.score = m.score;
         this.cannon.getPosition().setX(m.cannonX);
         this.cannon.getPosition().setY(m.cannonY);
-        this.cannon.setShootingMode(m.shootingMode);
+        this.cannon.setPower(m.cannonPower);
+        this.cannon.setAngle(m.cannonAngle);
+        this.cannon.setShootingMode(m.cannonShootingMode);
         this.missiles.clear();
         this.collisions.clear();
         this.enemies.clear();
