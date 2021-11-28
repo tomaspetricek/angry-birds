@@ -20,4 +20,9 @@ public class RealisticSineMovingStrategy implements IMovingStrategy {
         int dY = - (int) (amplitude * Math.sin(oscillationPhase));
         missile.move(new Vector(dX, dY));
     }
+
+    @Override
+    public String getName() {
+        return "RealisticSine";
+    }
 }

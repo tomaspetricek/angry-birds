@@ -34,10 +34,19 @@ public class Position implements Cloneable {
     }
 
     @Override
-    public Object clone() throws CloneNotSupportedException {
-        Position clone = (Position) super.clone();
-        clone.setX(dimX);
-        clone.setY(dimY);
+    public Object clone() {
+        Position clone = null;
+        try {
+            clone = (Position) super.clone();
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }
+
+        if (clone != null) {
+            clone.setX(dimX);
+            clone.setY(dimY);
+        }
+
         return clone;
     }
 }

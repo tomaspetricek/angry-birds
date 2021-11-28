@@ -4,6 +4,7 @@ import cz.cvut.fit.miadp.mvcgame.model.gameObjects.AbsMissile;
 
 public interface IMovingStrategy {
 
-    public void updatePosition( AbsMissile missile );
-    
+    public void updatePosition(AbsMissile missile);
+
+    public String getName();
 }

@@ -6,6 +6,7 @@ import cz.cvut.fit.miadp.mvcgame.command.AbstractGameCommand;
 import cz.cvut.fit.miadp.mvcgame.model.gameObjects.AbsCollision;
 import cz.cvut.fit.miadp.mvcgame.model.gameObjects.GameObject;
 import cz.cvut.fit.miadp.mvcgame.observer.IObservable;
+import cz.cvut.fit.miadp.mvcgame.state.IShootingMode;
 import cz.cvut.fit.miadp.mvcgame.strategy.IMovingStrategy;
 
 public interface IGameModel extends IObservable {
@@ -50,4 +51,6 @@ public interface IGameModel extends IObservable {
     int getScore();
 
     void stopTimer();
+
+    public IShootingMode getCannonShootingMode();
 }

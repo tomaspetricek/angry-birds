@@ -10,3 +10,6 @@
 ### Flyweight
 - only flyweight factory for image creation and reuse
 
+### Composite
+- for managing group of missiles that act as a unit
+

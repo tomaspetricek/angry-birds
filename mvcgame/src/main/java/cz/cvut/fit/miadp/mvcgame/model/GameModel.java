@@ -10,10 +10,12 @@ import cz.cvut.fit.miadp.mvcgame.command.UndoLastCmd;
 import cz.cvut.fit.miadp.mvcgame.config.MvcGameConfig;
 import cz.cvut.fit.miadp.mvcgame.model.gameObjects.*;
 import cz.cvut.fit.miadp.mvcgame.observer.IObserver;
+import cz.cvut.fit.miadp.mvcgame.state.IShootingMode;
 import cz.cvut.fit.miadp.mvcgame.strategy.IMovingStrategy;
 import cz.cvut.fit.miadp.mvcgame.strategy.RealisticMovingStrategy;
 import cz.cvut.fit.miadp.mvcgame.strategy.RealisticSineMovingStrategy;
 import cz.cvut.fit.miadp.mvcgame.strategy.SimpleMovingStrategy;
+
 
 public class GameModel implements IGameModel {
 
@@ -226,7 +228,6 @@ public class GameModel implements IGameModel {
         for (IObserver obs : this.observers) {
             obs.update();
         }
-
     }
 
     public void cannonShoot() {
@@ -257,7 +258,7 @@ public class GameModel implements IGameModel {
             this.movingStrategy = new RealisticMovingStrategy();
         } else if (this.movingStrategy instanceof RealisticMovingStrategy) {
             this.movingStrategy = new RealisticSineMovingStrategy();
-        } else if (this.movingStrategy instanceof RealisticSineMovingStrategy){
+        } else if (this.movingStrategy instanceof RealisticSineMovingStrategy) {
             this.movingStrategy = new SimpleMovingStrategy();
         }
     }
@@ -324,5 +325,10 @@ public class GameModel implements IGameModel {
     @Override
     public int getScore() {
         return score;
+    }
+
+    @Override
+    public IShootingMode getCannonShootingMode() {
+        return cannon.getShootingMode();
     }
 }

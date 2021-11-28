@@ -10,6 +10,9 @@ import cz.cvut.fit.miadp.mvcgame.model.gameObjects.AbsCollision;
 import cz.cvut.fit.miadp.mvcgame.model.gameObjects.AbsEnemy;
 import cz.cvut.fit.miadp.mvcgame.model.gameObjects.AbsGameInfo;
 import cz.cvut.fit.miadp.mvcgame.model.gameObjects.AbsMissile;
+import cz.cvut.fit.miadp.mvcgame.state.IShootingMode;
+import cz.cvut.fit.miadp.mvcgame.state.SingleShootingMode;
+import cz.cvut.fit.miadp.mvcgame.strategy.IMovingStrategy;
 import cz.cvut.fit.miadp.mvcgame.strategy.SimpleMovingStrategy;
 import junit.framework.Assert;
 import org.junit.Test;
@@ -26,12 +29,17 @@ public class CreateGameInfoMock {
         double angle = 0.5;
         int power = 10;
         int score = 100;
-        String expectedText = String.format("Power: %d, Angle: %.1f, Score: %d", power, angle, score);
+        IShootingMode mode = new SingleShootingMode();
+        IMovingStrategy strategy = new SimpleMovingStrategy();
+        String expectedText = String.format("Power: %d, Angle: %.1f, Score: %d\nShooting mode: %s, Moving strategy: %s",
+                power, angle, score, mode.getName(), strategy.getName());
 
         // prepare mocking
         when(model.getCannonAngle()).thenReturn(angle);
         when(model.getCannonPower()).thenReturn(power);
         when(model.getScore()).thenReturn(score);
+        when(model.getCannonShootingMode()).thenReturn(mode);
+        when(model.getMovingStrategy()).thenReturn(strategy);
 
         // create info
         IGameObjectsFactory goFact = new GameObjectsFactoryA(model);

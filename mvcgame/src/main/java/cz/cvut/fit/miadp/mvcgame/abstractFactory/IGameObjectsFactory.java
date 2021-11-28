@@ -13,4 +13,6 @@ public interface IGameObjectsFactory {
     AbsEnemy createForemanEnemy(Position pos);
 
     AbsGameInfo createGameInfo();
+
+    AbsMissile createMissileGroup(double initAngle, int initVelocity);
 }

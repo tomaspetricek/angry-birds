@@ -6,7 +6,7 @@ public class SingleShootingMode implements IShootingMode {
 
     @Override
     public String getName() {
-        return "SingleShootingMode";
+        return "Single";
     }
 
     @Override

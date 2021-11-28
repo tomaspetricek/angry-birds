@@ -18,52 +18,57 @@ public class CannonA extends AbsCannon {
     private int power;
     private List<AbsMissile> shootingBatch;
 
-    public CannonA( Position initialPosition, IGameObjectsFactory goFact ){
+    public CannonA(Position initialPosition, IGameObjectsFactory goFact) {
         this.position = initialPosition;
         this.goFact = goFact;
 
         this.power = MvcGameConfig.INIT_POWER;
         this.angle = MvcGameConfig.INIT_ANGLE;
 
-        this.shootingBatch = new ArrayList<AbsMissile>( );
+        this.shootingBatch = new ArrayList<AbsMissile>();
         this.shootingMode = AbsCannon.SINGLE_SHOOTING_MODE;
     }
 
-    public void moveUp( ){
-        this.move( new Vector(0, -1 * MvcGameConfig.MOVE_STEP ) );
+    public void moveUp() {
+        this.move(new Vector(0, -1 * MvcGameConfig.MOVE_STEP));
     }
 
-    public void moveDown( ){
-        this.move( new Vector(0, MvcGameConfig.MOVE_STEP ) );
+    public void moveDown() {
+        this.move(new Vector(0, MvcGameConfig.MOVE_STEP));
     }
 
     @Override
-    public List<AbsMissile> shoot( ) {
-        this.shootingBatch.clear( );
-        this.shootingMode.shoot( this );
+    public List<AbsMissile> shoot() {
+        this.shootingBatch.clear();
+        this.shootingMode.shoot(this);
         return this.shootingBatch;
     }
 
     @Override
-    public void primitiveShoot( ) {
-        this.shootingBatch.add( this.goFact.createMissile( this.angle, this.power ) );
+    public void primitiveShoot() {
+        this.shootingBatch.add(this.goFact.createMissile(this.angle, this.power));
+    }
+
+    @Override
+    public void groupShoot() {
+        this.shootingBatch.add(goFact.createMissileGroup(angle, power));
     }
 
     @Override
     public void aimUp() {
-        if (angle - MvcGameConfig.ANGLE_STEP > -Math.PI/2) {
+        if (angle - MvcGameConfig.ANGLE_STEP > -Math.PI / 2) {
             this.angle -= MvcGameConfig.ANGLE_STEP;
-        }else {
-            angle = -Math.PI/2;
+        } else {
+            angle = -Math.PI / 2;
         }
     }
 
     @Override
     public void aimDown() {
-        if (angle + MvcGameConfig.ANGLE_STEP < Math.PI/2) {
+        if (angle + MvcGameConfig.ANGLE_STEP < Math.PI / 2) {
             this.angle += MvcGameConfig.ANGLE_STEP;
         } else {
-            angle = Math.PI/2;
+            angle = Math.PI / 2;
         }
     }
 
@@ -74,9 +79,9 @@ public class CannonA extends AbsCannon {
 
     @Override
     public void powerDown() {
-        if ( this.power - MvcGameConfig.POWER_STEP > 0 ){
+        if (this.power - MvcGameConfig.POWER_STEP > 0) {
             this.power -= MvcGameConfig.POWER_STEP;
-        }  
+        }
     }
 
     @Override

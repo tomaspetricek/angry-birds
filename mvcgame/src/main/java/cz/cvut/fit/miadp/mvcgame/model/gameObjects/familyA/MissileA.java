@@ -17,4 +17,9 @@ public class MissileA extends AbsMissile {
     public void move() {
         this.movingStrategy.updatePosition(this);
     }
+
+    @Override
+    public boolean insideHitRadius(Position pos) {
+        return insideCircle(position, hitRadius, pos);
+    }
 }
