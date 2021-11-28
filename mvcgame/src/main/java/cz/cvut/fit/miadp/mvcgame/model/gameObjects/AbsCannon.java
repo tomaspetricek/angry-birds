@@ -52,6 +52,10 @@ public abstract class AbsCannon extends GameObject {
         return shootingMode;
     }
 
+    public void setShootingMode(IShootingMode shootingMode) {
+        this.shootingMode = shootingMode;
+    }
+
     public abstract int getPower();
 
     public abstract double getAngle();
